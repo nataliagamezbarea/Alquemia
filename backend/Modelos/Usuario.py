@@ -10,5 +10,3 @@ class Usuario(db.Model):
     email = db.Column(db.String(50), nullable=False)
     contrasena =  db.Column(db.String(100), nullable=False)
     is_admin = db.Column(db.Boolean, nullable=False , default = False)
-    cesta = db.relationship('Cesta', backref='usuario', uselist=False)  # Relación de uno a uno con cesta
-    pedidos = db.relationship('Pedido', backref='usuario')  # Relación de uno a muchos con pedido

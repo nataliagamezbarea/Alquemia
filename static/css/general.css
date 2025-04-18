@@ -57,7 +57,6 @@ a {
 }
 
 
-
 .justify-center {
   justify-content: center;
 }
@@ -70,7 +69,7 @@ a {
   flex-wrap: wrap;
 }
 
-.button-green {
+button[type ="submit"] {
   background-color: #0bab32;
   color: white;
   font-size: 1.1rem;
