@@ -51,7 +51,7 @@ def registro():
         db.session.commit()
 
         # Si el usuario ya ha sido creado le llevamos para que se logee 
-        # return redirect(url_for("login"))
+        return redirect(url_for("login"))
 
     # Cuando se haga get te va a llevar a registro
     return render_template("authentication/registro.html", cliente_tipo=None)
