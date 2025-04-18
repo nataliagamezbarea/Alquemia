@@ -1,0 +1,18 @@
+nav {
+  width: 100%;
+  font-size: 0.3rem;
+  box-sizing: border-box;
+  gap: 10px;
+  display: flex;
+  padding-top: 1.3vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+nav img {
+  width: 8vw;
+  min-width: 90px;
+}
+nav i {
+  font-size: 5em;
+}

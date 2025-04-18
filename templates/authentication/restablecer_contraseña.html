@@ -1,0 +1,31 @@
+{% extends "user/base.html" %}
+
+{% block head_extra %}
+  <link href="{{ url_for('static', filename='css/form.css') }}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='olvidado_restablecer_contraseña.css') }}" rel="stylesheet" >
+{% endblock %}
+
+{% block title %}Restablecer Contraseña - Alquimia{% endblock %}
+
+{% block content %}
+  <section class="flex center">
+    <div class="resetear-password-contenedor">
+      <h1>Restablecer Contraseña</h1>
+      
+      {% if get_flashed_messages() %}
+          <div class="messages">
+              {% for message in get_flashed_messages() %}
+                  <p class="error">{{ message }}</p> 
+              {% endfor %}
+          </div>
+      {% endif %}
+
+      <!-- Formulario para restablecer la contraseña -->
+      <form method="POST" class="flex column">
+        <label for="nueva_contraseña">Nueva Contraseña:</label>
+        <input type="password" name="nueva_contraseña" id="nueva_contraseña" required placeholder="Ingresa tu nueva contraseña" />
+        <button class="button-green" type="submit">Actualizar Contraseña</button>
+      </form>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "user/base.html" %}
+{% block title %}User{% endblock %}
+{% block content %}
+<link href="{{ url_for('static', filename='css/authentication/registro.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/form.css') }}" rel="stylesheet" />
+<script src="{{ url_for('static', filename='js/ver_contraseña.js') }}"></script>
+
+{% include "components/nav_user.html" %}
+
+<form action="/" method="POST" >
+    <h3>Datos personales</h3>
+<div>
+    <label for="Nombre">Nombre</label>
+<input type="text" value="{{usuario.nombre}}">
+
+</div>
+<div>
+    <label for="Nombre">Apellido1</label>
+<input type="text" value="{{usuario.apellido1}}">
+</div>
+<div>
+    <label for="Nombre">Apellido2</label>
+    <input type="text" value="{{usuario.apellido2}}">
+</div>
+
+<div>
+    <label for="Nombre">Email</label>
+<input type="text" value="{{usuario.email}}">
+    
+</div>
+
+
+<button type="submit" class="button-green">Actualizar</button>
+</form>
+
+   
+</div>
+
+{% endblock %}

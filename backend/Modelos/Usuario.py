@@ -1,0 +1,14 @@
+from backend.Modelos.database import db 
+from sqlalchemy.orm import relationship
+
+class Usuario(db.Model): 
+    __tablename__ = 'usuario'
+    id_usuario = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(50), nullable=False)
+    apellido1 = db.Column(db.String(50), nullable=True)
+    apellido2 = db.Column(db.String(50), nullable=True)
+    email = db.Column(db.String(50), nullable=False)
+    contrasena =  db.Column(db.String(100), nullable=False)
+    is_admin = db.Column(db.Boolean, nullable=False , default = False)
+    cesta = db.relationship('Cesta', backref='usuario', uselist=False)  # Relación de uno a uno con cesta
+    pedidos = db.relationship('Pedido', backref='usuario')  # Relación de uno a muchos con pedido

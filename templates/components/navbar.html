@@ -1,0 +1,39 @@
+
+<link href="{{ url_for('static', filename='css/nav.css') }}" rel="stylesheet"/>
+
+<script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+
+
+<nav class="flex space_between">
+  <div class="flex left">
+
+<i class="fa-solid fa-bars" data-css-url="{{ url_for('static', filename='css/menu.css') }}"></i>
+    <div class="menu">
+     <h3>Sugerencias para ti</h3>
+
+     </div>
+     
+    </div>
+
+  <div class="flex center">
+  <a href="{{ url_for('home') }}">
+    <img
+    src="{{ url_for('static', filename='img/logo/alquemia.png') }}"
+    alt=""
+  />
+  </a>
+  </div>
+
+  <div class="flex right">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-bag-shopping"></i>
+    <a href="">
+      <i class="fa-regular fa-user"></i>
+    </a>
+  </div>
+
+  <div></div>
+</nav>
+
+{% block content %}{% endblock %}
+
