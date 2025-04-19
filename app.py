@@ -3,8 +3,8 @@ from flask import Flask
 from backend.Modelos.database import init_db
 from routes.home import home
 from routes.registro import registro
-from routes.login import login
-from routes.cerrar_sesion import cerrar_sesion
+from routes.authentication.login import login
+from routes.authentication.cerrar_sesion import cerrar_sesion
 app = Flask(__name__)
 
 # Para el login 
