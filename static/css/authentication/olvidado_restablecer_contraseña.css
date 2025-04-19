@@ -1,5 +1,5 @@
 /* Contenedor principal */
-.olvidado-contrasena-container {
+#olvidado-contrasena-container {
   width: 100%;
   max-width: 400px;
   margin: 50px auto;
@@ -7,7 +7,7 @@
   border-radius: 8px;
 }
 
-h2 {
+#olvidado-contrasena-container h2 {
   text-align: center;
   margin-bottom: 20px;
   font-size: 24px;
@@ -15,25 +15,25 @@ h2 {
 }
 
 /* Formulario */
-.form-grupo {
+#olvidado-contrasena-container.form-grupo {
   margin-bottom: 15px;
 }
 
-.form-grupo label {
+#olvidado-contrasena-container.form-grupo label {
   font-size: 16px;
   color: #555;
   display: block;
   margin-bottom: 5px;
 }
 
-.form-grupo label {
+#olvidado-contrasena-container.form-grupo label {
   font-size: 16px;
   color: #555;
   display: block;
   margin-bottom: 5px;
 }
 
-input {
+#olvidado-contrasena-containerinput {
   width: 100%;
   padding: 10px;
   font-size: 14px;
@@ -44,20 +44,20 @@ input {
 }
 
 /* Mensajes de alertaa */
-.alerta {
+#olvidado-contrasena-container.alerta {
   padding: 15px;
   border-radius: 5px;
   margin-bottom: 20px;
   font-size: 16px;
 }
 
-.alerta-exito {
+#olvidado-contrasena-container.alerta-exito {
   background-color: #d4edda;
   color: #155724;
   border: 1px solid #c3e6cb;
 }
 
-.alerta-error {
+#olvidado-contrasena-container.alerta-error {
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
