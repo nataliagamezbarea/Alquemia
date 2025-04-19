@@ -4,6 +4,9 @@ from backend.Modelos.database import init_db
 from routes.home import home
 from routes.authentication import *
 from dotenv import load_dotenv
+from routes.user import informacion_personal
+from routes.authentication.update_usuario import update_usuario 
+
 
 # Cargar las variables de entorno desde el archivo .env
 load_dotenv()
@@ -30,6 +33,8 @@ app.add_url_rule('/login', 'login', login, methods=["GET", "POST"])
 app.add_url_rule('/registro', 'registro', registro, methods=["GET", "POST"])
 app.add_url_rule('/olvidado_contraseña', 'olvidado_contraseña', olvidado_contraseña, methods=["GET", "POST"])
 app.add_url_rule('/restablecer_contraseña/<token>', 'restablecer_contraseña', restablecer_contraseña, methods=["GET", "POST"])
+app.add_url_rule('/informacion_personal', 'informacion_personal', informacion_personal)
+app.add_url_rule('/update_usuario', 'update_usuario', update_usuario, methods=['POST']) 
 app.add_url_rule('/cerrar_sesion', 'cerrar_sesion', cerrar_sesion, methods=["GET", "POST"])
 
 if __name__ == '__main__':

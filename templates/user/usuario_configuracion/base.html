@@ -5,40 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mi Aplicación{% endblock %}</title>
 
-    <!-- Iconos de Font Awesome -->
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
-    
-    <!-- Favicon -->
     <link
       rel="shortcut icon"
       href="{{ url_for('static', filename='img/logo/alquemia.png') }}"
     />
 
-    <!-- Estilos globales -->
-    <link href="{{ url_for('static', filename='css/form.css') }}" rel="stylesheet" />
-    <link href="{{ url_for('static', filename='css/general.css') }}" rel="stylesheet" />
 
-    <!-- Estilos adicionales desde plantillas hijas -->
-    {% block head_extra %}{% endblock %}
+  
+    <link href="{{ url_for('static', filename='css/form.css') }}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='css/general.css') }}" rel="stylesheet" />
+
 </head>
 <body>
 
-    <!-- Barra de navegación -->
     {% include "components/navbar.html" %}
+   <div class="flex wrap justify-center" style="padding: 4vh;">
+        {% include "components/nav_user.html" %}
+        {% block content %}
+        {% endblock %}
 
-    <!-- Contenido principal -->
-    {% block content %}
-    {% endblock %}
+   </div>
 
-    <!-- Footer -->
+       
     {% include "components/footer.html" %}
 
-    <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     {% block extra_js %}{% endblock %} 
-
 </body>
 </html>
