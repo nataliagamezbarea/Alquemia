@@ -50,6 +50,22 @@ input[type="password"] {
 }
 
 
+.exito {
+  background-color: #e0ffe0;
+  color: #006400;
+  border: 1px solid #5cff5c;
+  border-left: 5px solid #00d000;
+  padding: 1em;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+
 button[type="submit"], .button-green {
     background-color: #0bab32;
     color: white;
