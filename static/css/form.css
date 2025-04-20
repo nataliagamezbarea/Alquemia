@@ -65,6 +65,26 @@ input[type="password"] {
   gap: 0.5em;
 }
 
+.alerta {
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.alerta-exito {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alerta-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+
 
 button[type="submit"], .button-green {
     background-color: #0bab32;

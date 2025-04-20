@@ -5,7 +5,6 @@ from routes.home import home
 from routes.authentication import *
 from dotenv import load_dotenv
 from routes.user import informacion_personal
-from routes.authentication.update_usuario import update_usuario
 
 from routes.usuario.compras import compras 
 
@@ -38,6 +37,7 @@ app.add_url_rule('/restablecer_contraseña/<token>', 'restablecer_contraseña', 
 app.add_url_rule('/informacion_personal', 'informacion_personal', informacion_personal)
 app.add_url_rule('/update_usuario', 'update_usuario', update_usuario, methods=['POST']) 
 app.add_url_rule('/compras', 'compras', compras, methods=["GET", "POST"])
+app.add_url_rule('/cambiar_contraseña', 'cambiar_contraseña', update_contraseña, methods=["GET", "POST"])
 
 app.add_url_rule('/cerrar_sesion', 'cerrar_sesion', cerrar_sesion, methods=["GET", "POST"])
 

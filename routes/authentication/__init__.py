@@ -4,3 +4,4 @@ from routes.authentication.cerrar_sesion import cerrar_sesion
 from routes.authentication.restablecer_contraseña import restablecer_contraseña
 from routes.authentication.olvidado_contraseña import olvidado_contraseña
 from routes.authentication.update_usuario import update_usuario 
+from routes.authentication.update_contraseña import update_contraseña
