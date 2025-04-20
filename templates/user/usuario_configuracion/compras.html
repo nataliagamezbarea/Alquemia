@@ -1,0 +1,62 @@
+{% extends "user/usuario_configuracion/base.html" %}
+
+{% block title %}Mis Compras{% endblock %}
+
+{% block content %}
+
+<link href="{{ url_for('static', filename='css/user/compras.css') }}" rel="stylesheet" />
+
+
+<section title="compras">
+  <h1>Mis Compras</h1>
+
+  {% if pedidos %}
+    {% for pedido in pedidos %}
+      <div class="pedido-card">
+        <div class="pedido-header">
+          <div>Pedido realizado el {{ pedido.fecha }}</div>
+          <div>Estado: {{ pedido.estado }} | Tipo: {{ pedido.tipo_pedido }}</div>
+        </div>
+
+        <div class="pedido-entrega">
+          🕒 Tu pedido llegará entre el <strong>{{ pedido.fecha_entrega_min.strftime("%d/%m/%Y") }}</strong> y el <strong>{{ pedido.fecha_entrega_max.strftime("%d/%m/%Y") }}</strong>.
+          {% if pedido.dias_restantes > 0 %}
+            <br>Faltan <strong>{{ pedido.dias_restantes }}</strong> día{{ 's' if pedido.dias_restantes > 1 }} para recibirlo.
+          {% else %}
+            <br><strong>¡Tu pedido debería estar llegando!</strong>
+          {% endif %}
+        </div>
+
+        <ul class="productos-lista">
+          {% for pp in pedido.pedido_productos %}
+            <li class="acordeon-item">
+              <input type="checkbox" id="producto-{{ loop.index }}" class="acordeon-toggle">
+              <label for="producto-{{ loop.index }}" class="acordeon-label">
+                {{ pp.variantes.producto.nombre }}
+                <span class="flecha">⌄</span>
+              </label>
+
+              <div class="acordeon-contenido">
+                {% with imagenes=pp.variantes.producto.imagenes %}
+                  {% if imagenes and imagenes|length > 0 %}
+                    <img src="{{ imagenes.0.imagen_url }}" alt="Imagen del producto">
+                  {% endif %}
+                {% endwith %}
+                <p><strong>Talla:</strong> {{ pp.variantes.talla }}</p>
+                <p><strong>Color:</strong> {{ pp.variantes.color }}</p>
+                <p><strong>Cantidad:</strong> {{ pp.cantidad }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div id="mensaje-vacio">
+      ¡Aún no has realizado ninguna compra!<br>
+      Explora nuestros productos y encuentra algo que te encante. 🛍️
+    </div>
+  {% endif %}
+</section>
+
+{% endblock %}
