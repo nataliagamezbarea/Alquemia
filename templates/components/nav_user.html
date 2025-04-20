@@ -2,7 +2,7 @@
 
 <!-- Barra lateral de navegación de usuario -->
 <div id="nav">
-    <a href="#" class="active">
+    <a href="{{ url_for('informacion_personal') }}" class="{% if request.endpoint == 'informacion_personal' %}active{% endif %}">
         <i class="fa fa-user"></i> Información personal
     </a>
 
@@ -10,11 +10,11 @@
         <i class="fa fa-credit-card"></i> Métodos de pago
     </a>
 
-    <a href="#">
+    <a href="{{ url_for('compras') }}" class="{% if request.endpoint == 'compras' %}active{% endif %}">
         <i class="fa fa-shopping-bag"></i> Historial de compras
     </a>
 
-    <a href="#">
+    <a href="{{ url_for('cambiar_contraseña') }}" class="{% if request.endpoint == 'cambiar_contraseña' %}active{% endif %}">
         <i class="fa fa-lock"></i> Contraseña y Seguridad
     </a>
 

@@ -1,4 +1,4 @@
-from flask import render_template, request, session
+from flask import redirect, render_template, request, session, url_for
 from backend.Modelos.Usuario import Usuario
 import bcrypt
 
@@ -23,10 +23,8 @@ def login():
             # Redirigir a la página correspondiente según el rol
             if usuario_encontrado.is_admin:
                 return render_template("admin/admin.html")  # Si es admin, redirigir a la página de admin
-            return render_template("user/usuario_configuracion/user.html")  # Si no es admin, redirigir a la página de usuario
+            return redirect(url_for('informacion_personal'))  
 
-        # Si las credenciales son incorrectas
-        return render_template("authentication/login.html", error="Credenciales incorrectas")
 
     # Si no es un POST, renderizar el formulario de login
     return render_template("authentication/login.html")
