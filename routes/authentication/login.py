@@ -5,10 +5,9 @@ import bcrypt
 def login():
     # Si el usuario ya ha iniciado sesión
     if "user" in session:
-        # Verificar si es administrador usando la variable de sesión directamente
         if "is_admin" in session and session["is_admin"]:
             return render_template("admin/admin.html")  # Redirigir a la página de admin
-        return render_template("user/usuario_configuracion/user.html")  # Redirigir a la página de usuario
+        return redirect(url_for('informacion_personal'))  # Redirigir a la página de usuario
 
     # Si es un POST (cuando se envían las credenciales)
     if request.method == "POST":
@@ -22,9 +21,8 @@ def login():
             session["is_admin"] = usuario_encontrado.is_admin
             # Redirigir a la página correspondiente según el rol
             if usuario_encontrado.is_admin:
-                return render_template("admin/admin.html")  # Si es admin, redirigir a la página de admin
-            return redirect(url_for('informacion_personal'))  
-
+                return render_template("admin/admin.html")
+            return redirect(url_for('informacion_personal'))
 
     # Si no es un POST, renderizar el formulario de login
     return render_template("authentication/login.html")
