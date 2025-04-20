@@ -1,4 +1,5 @@
 from backend.Modelos.database import db 
+from sqlalchemy.orm import relationship
 
 class ProductoVariante(db.Model):
     __tablename__ = 'producto_variantes'
@@ -8,3 +9,5 @@ class ProductoVariante(db.Model):
     color = db.Column(db.String(50))
     talla = db.Column(db.String(10))
     stock = db.Column(db.Integer, nullable=False, default=0)
+    
+    producto = db.relationship('Producto', back_populates='variantes')

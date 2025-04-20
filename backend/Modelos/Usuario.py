@@ -10,3 +10,5 @@ class Usuario(db.Model):
     email = db.Column(db.String(50), nullable=False)
     contrasena =  db.Column(db.String(100), nullable=False)
     is_admin = db.Column(db.Boolean, nullable=False , default = False)
+
+    pedidos = relationship('Pedido', backref='usuario', lazy=True)

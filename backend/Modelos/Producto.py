@@ -8,5 +8,5 @@ class Producto(db.Model):
     tipo_producto = db.Column(db.Enum('chico', 'chica', 'unisex'), nullable=False)
 
     imagenes = db.relationship('ProductoImagen', backref='producto')
-    variantes = db.relationship('ProductoVariante', backref='producto')
+    variantes = db.relationship('ProductoVariante', back_populates='producto')
     categorias = db.relationship('Categoria', secondary='producto_categoria', backref='productos')

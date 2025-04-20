@@ -1,4 +1,5 @@
 from backend.Modelos.database import db 
+from sqlalchemy.orm import relationship
 
 class Pedido(db.Model):
     __tablename__ = 'pedido'
@@ -12,6 +13,5 @@ class Pedido(db.Model):
     fecha = db.Column(db.Date, nullable=False)
     id_usuario = db.Column(db.Integer, db.ForeignKey('usuario.id_usuario'), nullable=False)
 
-    productos = db.relationship('ProductoVariante', secondary='pedido_productos', backref='pedidos')
-    tiendas = db.relationship('Tienda', secondary='pedido_tienda', backref='pedidos')
-    detalles = db.relationship('DetallesPedido', uselist=False, backref='pedido')
+    pedido_productos = relationship('PedidoProducto', backref='pedido', lazy=True)
+

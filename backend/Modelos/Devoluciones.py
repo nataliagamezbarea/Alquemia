@@ -1,6 +1,6 @@
 from backend.Modelos.database import db 
 
-class Devolucion(db.Model):
+class Devoluciones(db.Model):
     __tablename__ = 'devoluciones'
 
     id_devolucion = db.Column(db.Integer, primary_key=True, autoincrement=True)
