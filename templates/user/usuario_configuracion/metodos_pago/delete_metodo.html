@@ -1,0 +1,19 @@
+<link href="{{ url_for('static', filename='css/metodos_pago/delete_metodo.css') }}" rel="stylesheet" />
+
+{% for metodo in metodos %}
+
+
+<section title="delete_metodo" id="modal-delete-{{ metodo.id_metodo }}" popover class="modal-content">
+  <h2>¿Estás seguro de eliminar este método de pago?</h2>
+  <p>Este método de pago será eliminado permanentemente. ¿Deseas continuar?</p>
+  <div class="modal-actions">
+    <button type="button" 
+      popovertarget="modal-delete-{{ metodo.id_metodo }}"
+      popovertargetaction="hide">Cancelar</button>
+
+    <form method="POST" action="{{ url_for('delete_metodo_pago', id_metodo=metodo.id_metodo) }}">
+      <button type="submit">Eliminar</button>
+    </form>
+  </div>
+</section>
+{% endfor %}

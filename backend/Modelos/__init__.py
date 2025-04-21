@@ -14,3 +14,4 @@ from .ProductoImagen import ProductoImagen
 from .ProductoVariante import ProductoVariante
 from .Tienda import Tienda
 from .Usuario import Usuario
+from .MetodoPago import MetodoPago

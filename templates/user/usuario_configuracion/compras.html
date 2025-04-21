@@ -7,7 +7,7 @@
 <link href="{{ url_for('static', filename='css/user/compras.css') }}" rel="stylesheet" />
 
 
-<section title="compras">
+<section title="compras" class="w-25">
   <h1>Mis Compras</h1>
 
   {% if pedidos %}
@@ -52,7 +52,7 @@
       </div>
     {% endfor %}
   {% else %}
-    <div id="mensaje-vacio">
+    <div class="mensaje-vacio">
       ¡Aún no has realizado ninguna compra!<br>
       Explora nuestros productos y encuentra algo que te encante. 🛍️
     </div>

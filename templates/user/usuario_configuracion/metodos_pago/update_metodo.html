@@ -1,0 +1,42 @@
+{% for metodo in metodos %}
+
+  <div id="modal-edit-{{ metodo.id_metodo }}" popover class="modal-content">
+    <h2>Editar método de pago</h2>
+
+    <form method="POST" action="{{ url_for('update_metodo_pago', id_metodo=metodo.id_metodo) }}">
+      <input type="hidden" name="id" value="{{ metodo.id_metodo }}">
+
+      <label>
+        Tipo:
+        <select name="tipo" required>
+          <option value="tarjeta" {% if metodo.tipo == 'tarjeta' %}selected{% endif %}>Tarjeta</option>
+          <option value="paypal" {% if metodo.tipo == 'paypal' %}selected{% endif %}>PayPal</option>
+        </select>
+      </label>
+
+      <label>
+        Número tarjeta:
+        <input type="text" name="tarjeta" required maxlength="20" value="{{ metodo.tarjeta }}">
+      </label>
+
+      <label>
+        Fecha de caducidad:
+        <input type="date" name="fecha_caducidad" required value="{{ metodo.fecha_caducidad }}">
+      </label>
+
+      <label>
+        CSV:
+        <input type="text" name="csv" required maxlength="4" value="{{ metodo.csv }}">
+      </label>
+
+      <div class="modal-actions">
+        <button type="submit" >Guardar</button>
+
+        <button type="button" 
+          popovertarget="modal-edit-{{ metodo.id_metodo }}"
+          popovertargetaction="hide">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endfor %}

@@ -1,0 +1,19 @@
+<link href="{{ url_for('static', filename='css/metodos_pago/modales.css') }}" rel="stylesheet" />
+
+<div id="modal-add" popover class="modal-content">
+  <h2>Añadir método de pago</h2>
+  <form method="POST" action="{{ url_for('add_metodo_pago') }}">
+    <select name="tipo" required>
+      <option value="tarjeta">Tarjeta</option>
+      <option value="paypal">PayPal</option>
+    </select>
+    <input type="text" name="tarjeta" placeholder="Número tarjeta" required maxlength="20">
+    <input type="date" name="fecha_caducidad" required>
+    <input type="text" name="csv" placeholder="CSV" required maxlength="4">
+    <div class="modal-actions">
+      <button type="submit" >Guardar</button>
+      <button type="button"  popovertarget="modal-add" popovertargetaction="hide">Cancelar</button>
+
+    </div>
+  </form>
+</div>

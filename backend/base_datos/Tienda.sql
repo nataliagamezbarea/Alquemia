@@ -8,6 +8,23 @@ CREATE TABLE usuario (
     is_admin          BOOLEAN        NOT NULL DEFAULT FALSE
 );
 
+
+CREATE TABLE metodos_pago (
+    id_metodo                 INT            PRIMARY KEY AUTO_INCREMENT,
+    id_usuario                INT            NOT NULL,
+    tipo                      ENUM('tarjeta', 'paypal', 'otro') 
+                                  NOT NULL DEFAULT 'tarjeta',
+    tarjeta                   VARCHAR(20)    NOT NULL,
+    fecha_caducidad           DATE           NOT NULL,
+    csv                       VARCHAR(4)     NOT NULL,
+    is_default                BOOLEAN        NOT NULL DEFAULT FALSE,
+    created_at                DATETIME       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at                DATETIME       NOT NULL 
+                                  ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+        ON DELETE CASCADE
+);
+
 CREATE TABLE cesta (
     id_cesta       INT            PRIMARY KEY AUTO_INCREMENT,
     id_usuario     INT            NOT NULL UNIQUE,

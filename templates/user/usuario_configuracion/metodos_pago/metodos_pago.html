@@ -1,0 +1,14 @@
+{% extends "user/usuario_configuracion/base.html" %}
+
+{% block title %}
+    Mis Compras
+{% endblock %}
+
+{% block content %}
+   <div class="flex column w-25">
+    {% include "user/usuario_configuracion/metodos_pago/read_metodos.html" %}
+    {% include "user/usuario_configuracion/metodos_pago/add_metodo.html" %}
+    {% include "user/usuario_configuracion/metodos_pago/update_metodo.html" %}
+    {% include "user/usuario_configuracion/metodos_pago/delete_metodo.html" %}
+   </div>
+{% endblock %}

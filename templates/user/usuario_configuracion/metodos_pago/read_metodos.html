@@ -1,0 +1,36 @@
+<link href="{{ url_for('static', filename='css/metodos_pago/read_metodos.css') }}" rel="stylesheet" />
+
+<button title="Añadir Método" popovertarget="modal-add">
+  <i class="fas fa-plus"></i> Añadir Método
+</button>
+
+<div class="flex column">
+  {% if metodos %}
+    {% for metodo in metodos %}
+      <div class="metodo-row {{ metodo.tipo }}">
+        <div class="metodo-info">
+          {% if metodo.tipo == 'paypal' %}
+            <i class="fab fa-paypal metodo-icon"></i>
+          {% else %}
+            <i class="fas fa-credit-card metodo-icon"></i>
+          {% endif %}
+          <div class="metodo-titulo">
+            {{ metodo.tipo|capitalize }}{% if metodo.tarjeta %} • **** {{ metodo.tarjeta[-4:] }}{% endif %}
+          </div>
+        </div>
+        <div class="metodo-actions">
+          <button popovertarget="modal-edit-{{ metodo.id_metodo }}" title="Editar">
+            <i class="fas fa-pen-to-square"></i>
+          </button>
+          <button popovertarget="modal-delete-{{ metodo.id_metodo }}" title="Eliminar">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="mensaje-vacio">
+      <p>No tienes métodos de pago registrados aún.</p>
+    </div>
+  {% endif %}
+</div>

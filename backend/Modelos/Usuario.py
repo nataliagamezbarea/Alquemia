@@ -12,3 +12,4 @@ class Usuario(db.Model):
     is_admin = db.Column(db.Boolean, nullable=False , default = False)
 
     pedidos = relationship('Pedido', backref='usuario', lazy=True)
+    metodos_pago   = relationship('MetodoPago', back_populates='usuario', cascade='all, delete-orphan')

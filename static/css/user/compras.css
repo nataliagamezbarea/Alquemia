@@ -88,12 +88,4 @@ section[title="compras"] .acordeon-contenido p {
   font-size: 0.9rem;
 }
 
-section[title="compras"] #mensaje-vacio {
-  text-align: center;
-  font-size: 1.1rem;
-  margin-top: 2rem;
-  background-color: #fffbe6;
-  padding: 1.5rem;
-  border: 1px dashed #f0c36d;
-  border-radius: 10px;
-}
+

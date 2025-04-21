@@ -6,7 +6,7 @@
         <i class="fa fa-user"></i> Información personal
     </a>
 
-    <a href="#">
+    <a href="{{ url_for('metodos_pago') }}" class="{% if request.endpoint == 'metodos_pago' %}active{% endif %}">
         <i class="fa fa-credit-card"></i> Métodos de pago
     </a>
 
