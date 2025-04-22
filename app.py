@@ -6,6 +6,7 @@ from routes.authentication import *
 from dotenv import load_dotenv
 from routes.user import informacion_personal
 
+from routes.usuario.nosotros import nosotros
 from routes.usuario.compras import compras
 
 from routes.usuario.metodos_de_pago import *
@@ -48,6 +49,9 @@ app.add_url_rule('/metodos_pago','metodos_pago', metodos_pago, methods=["GET" , 
 app.add_url_rule('/add_metodo_pago','add_metodo_pago', add_metodo_pago, methods=["GET" , "POST"])
 app.add_url_rule('/update_metodo_pago', 'update_metodo_pago', update_metodo_pago, methods=["POST"])
 app.add_url_rule('/delete_metodo_pago/<int:id_metodo>', 'delete_metodo_pago', delete_metodo_pago, methods=["POST"])
+
+
+app.add_url_rule('/nosotros', 'nosotros', nosotros, methods=["GET"])
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug=True)
