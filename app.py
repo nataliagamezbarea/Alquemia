@@ -11,6 +11,7 @@ from routes.usuario.nosotros import nosotros
 from routes.usuario.compras import compras
 
 from routes.usuario.metodos_de_pago import *
+from routes.usuario.contacto import *
 
 
 # Cargar las variables de entorno desde el archivo .env
@@ -54,6 +55,10 @@ app.add_url_rule('/delete_metodo_pago/<int:id_metodo>', 'delete_metodo_pago', de
 
 app.add_url_rule('/nosotros', 'nosotros', nosotros, methods=["GET"])
 app.add_url_rule('/encuentranos', 'encuentranos', encuentranos, methods=["GET"])
+app.add_url_rule('/contactanos', 'contactanos', contacto, methods=["GET"])
+app.add_url_rule('/contactanos/particular', 'contactanos_particular', contacto_particular, methods=["GET", "POST"])
+app.add_url_rule('/contactanos/empresa', 'contactanos_empresa', contacto_empresa, methods=["GET", "POST"])
+
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug=True)
