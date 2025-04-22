@@ -24,7 +24,7 @@
 <body>
 
     {% include "components/navbar.html" %}
-   <div class="flex wrap justify-center" style="padding: 4vh;">
+   <div class="flex flex-wrap justify-center" style="padding: 4vh;">
         {% include "components/nav_user.html" %}
         {% block content %}
         {% endblock %}
@@ -34,7 +34,6 @@
        
     {% include "components/footer.html" %}
 
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     {% block extra_js %}{% endblock %} 
 </body>
 </html>
