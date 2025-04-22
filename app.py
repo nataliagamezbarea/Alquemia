@@ -6,6 +6,7 @@ from routes.authentication import *
 from dotenv import load_dotenv
 from routes.user import informacion_personal
 
+from routes.usuario.encuentranos import encuentranos
 from routes.usuario.nosotros import nosotros
 from routes.usuario.compras import compras
 
@@ -52,6 +53,7 @@ app.add_url_rule('/delete_metodo_pago/<int:id_metodo>', 'delete_metodo_pago', de
 
 
 app.add_url_rule('/nosotros', 'nosotros', nosotros, methods=["GET"])
+app.add_url_rule('/encuentranos', 'encuentranos', encuentranos, methods=["GET"])
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug=True)
