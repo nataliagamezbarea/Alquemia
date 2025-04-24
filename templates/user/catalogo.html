@@ -1,0 +1,64 @@
+{% extends "user/base.html" %}
+
+{% block title %}Catálogo de Productos{% endblock %}
+
+{% block content %}
+<link href="{{ url_for('static', filename='css/user/catalogo.css') }}" rel="stylesheet" />
+
+<section class="catalogo">
+
+  {% if productos %}
+    <div class="productos-lista">
+      {% for producto in productos %}
+        {% set producto_index = loop.index %}
+        <div class="product">
+          <div class="product-image-container" id="producto-{{ producto_index }}">
+            <div class="product-image default" style="background-image: url('{{ producto.color_images[0].img_producto }}');"></div>
+            <div class="product-image hover" style="background-image: url('{{ producto.color_images[1].img_producto if producto.color_images|length > 1 else producto.color_images[0].img_producto }}');"></div>
+          </div>
+
+          <div class="product-details">
+
+            <p class="product-name">{{ producto.nombre }}</p>
+            <p class="product-price">{{ producto.precio }} €</p>
+
+            <div class="color-options">
+              {% set colores_vistos = [] %}
+              {% for imagen_color in producto.color_images %}
+                {% if imagen_color.color.id_color not in colores_vistos %}
+                  <span class="color"
+                        data-img="{{ imagen_color.img_producto }}"
+                        data-target="producto-{{ producto_index }}"
+                        style="background-image: url('{{ imagen_color.color.img_color }}'); background-size: cover;"
+                        title="Color"></span>
+                  {% set _ = colores_vistos.append(imagen_color.color.id_color) %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="paginacion">
+      {% if pagina_actual > 1 %}
+        <a href="{{ url_for('catalogo', pagina=pagina_actual-1) }}" class="paginacion-btn">Anterior</a>
+      {% endif %}
+
+      <span>Página {{ pagina_actual }} de {{ total_paginas }}</span>
+
+      {% if pagina_actual < total_paginas %}
+        <a href="{{ url_for('catalogo', pagina=pagina_actual+1) }}" class="paginacion-btn">Siguiente</a>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="mensaje-vacio">
+      No hay productos disponibles en el catálogo en este momento. 😞
+    </div>
+  {% endif %}
+</section>
+
+<script src="{{ url_for('static', filename='js/cambiar_imagen_color.js') }}"></script>
+
+
+{% endblock %}
