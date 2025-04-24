@@ -1,4 +1,5 @@
 from backend.Modelos.database import db
+from backend.Modelos.Color import Color 
 
 class Producto(db.Model):
     __tablename__ = 'productos'
@@ -9,6 +10,5 @@ class Producto(db.Model):
     precio = db.Column(db.Numeric(10, 2), nullable=False)
     descripcion = db.Column(db.Text, nullable=True)
 
-    imagenes = db.relationship('ProductoColorImg', backref='producto_imagen', lazy=True)  
     variantes = db.relationship('ProductoVariante', back_populates='producto')
     categorias = db.relationship('Categoria', secondary='producto_categoria', backref='productos')

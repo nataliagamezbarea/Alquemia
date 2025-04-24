@@ -1,4 +1,4 @@
-from backend.Modelos.database import db 
+from backend.Modelos.database import db
 from sqlalchemy.orm import relationship
 
 class Pedido(db.Model):
@@ -13,5 +13,4 @@ class Pedido(db.Model):
     fecha = db.Column(db.Date, nullable=False)
     id_usuario = db.Column(db.Integer, db.ForeignKey('usuario.id_usuario'), nullable=False)
 
-    pedido_productos = relationship('PedidoProducto', backref='pedido', lazy=True)
-
+    pedido_productos = relationship('PedidoProducto', backref='pedido_productos', lazy=True)

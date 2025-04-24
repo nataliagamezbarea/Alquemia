@@ -10,9 +10,8 @@ from .PedidoProducto import PedidoProducto
 from .PedidoTienda import PedidoTienda
 from .Producto import Producto
 from .ProductoCategoria import ProductoCategoria
-from .ProductoImagen import ProductoImagen
 from .ProductoVariante import ProductoVariante
 from .Tienda import Tienda
 from .Usuario import Usuario
 from .MetodoPago import MetodoPago
-from .ProductoColorImg import ProductoColorImg
+from .ProductoColor import ProductoColor

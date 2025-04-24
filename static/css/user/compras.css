@@ -70,6 +70,7 @@ section[title="compras"] .acordeon-contenido {
   display: none;
   margin-top: 1rem;
   padding-left: 1.2rem;
+  text-align: center;  
 }
 
 section[title="compras"] .acordeon-toggle:checked + .acordeon-label + .acordeon-contenido {
@@ -87,5 +88,3 @@ section[title="compras"] .acordeon-contenido p {
   margin: 0.3rem 0;
   font-size: 0.9rem;
 }
-
-

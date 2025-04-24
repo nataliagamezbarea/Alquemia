@@ -6,7 +6,6 @@
 
 <link href="{{ url_for('static', filename='css/user/compras.css') }}" rel="stylesheet" />
 
-
 <section title="compras" class="w-25">
   <h1>Mis Compras</h1>
 
@@ -16,7 +15,11 @@
         <div class="pedido-header">
           <div>Pedido realizado el {{ pedido.fecha }}</div>
           <div>Estado: {{ pedido.estado }} | Tipo: {{ pedido.tipo_pedido }}</div>
-        </div>
+
+          {% set total_pedido = 0 %}
+          {% for pp in pedido.pedido_productos %}
+            {% set total_pedido = total_pedido + pp.total_producto %}
+          {% endfor %}
 
         <div class="pedido-entrega">
           🕒 Tu pedido llegará entre el <strong>{{ pedido.fecha_entrega_min.strftime("%d/%m/%Y") }}</strong> y el <strong>{{ pedido.fecha_entrega_max.strftime("%d/%m/%Y") }}</strong>.
@@ -32,23 +35,29 @@
             <li class="acordeon-item">
               <input type="checkbox" id="producto-{{ loop.index }}" class="acordeon-toggle">
               <label for="producto-{{ loop.index }}" class="acordeon-label">
-                {{ pp.variantes.producto.nombre }}
+                {{ pp.producto_variante.producto.nombre }}
                 <span class="flecha">⌄</span>
               </label>
 
-              <div class="acordeon-contenido">
-                {% with imagenes=pp.variantes.producto.imagenes %}
-                  {% if imagenes and imagenes|length > 0 %}
-                    <img src="{{ imagenes.0.imagen_url }}" alt="Imagen del producto">
+              <div class="acordeon-contenido flex column align-center justify-center">
+                {% with color_imagen = pp.producto_variante.color.color_images|first %}
+                  {% if color_imagen %}
+                    <img style="width: 200px; height: 300px;" src="{{ color_imagen.img_producto }}" alt="Imagen del color">
+                  {% else %}
+                    <p><strong>No hay imagen disponible para este color.</strong></p>
+                    <p><strong>ID del producto:</strong> {{ pp.producto_variante.producto.id_producto }}</p>
                   {% endif %}
                 {% endwith %}
-                <p><strong>Talla:</strong> {{ pp.variantes.talla }}</p>
-                <p><strong>Color:</strong> {{ pp.variantes.color }}</p>
+                <p><strong>Talla:</strong> {{ pp.producto_variante.talla }}</p>
+                <p><strong>Color:</strong> {{ pp.producto_variante.color.color_nombre }}</p>
                 <p><strong>Cantidad:</strong> {{ pp.cantidad }}</p>
+                <p><strong>Total:</strong> {{ pp.total_producto }}</p>
               </div>
             </li>
           {% endfor %}
         </ul>
+
+        <div class="total">Precio: {{ total_pedido }}</div>
       </div>
     {% endfor %}
   {% else %}
