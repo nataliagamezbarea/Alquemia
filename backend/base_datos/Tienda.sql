@@ -91,6 +91,7 @@ CREATE TABLE tiendas (
     provincia VARCHAR(100) NOT NULL,
     ciudad VARCHAR(100) NOT NULL,
     codigo_postal VARCHAR(10) NOT NULL
+    pais VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE pedido (
