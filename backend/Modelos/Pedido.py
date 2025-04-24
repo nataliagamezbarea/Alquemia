@@ -5,9 +5,9 @@ class Pedido(db.Model):
     __tablename__ = 'pedido'
 
     id_pedido = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nombre = db.Column(db.String(100), nullable=False)
-    apellido1 = db.Column(db.String(50), nullable=False)
-    apellido2 = db.Column(db.String(50), nullable=False)
+    nombre_envio = db.Column(db.String(100), nullable=False)
+    apellido1_envio = db.Column(db.String(50), nullable=False)
+    apellido2_envio = db.Column(db.String(50), nullable=False)
     estado = db.Column(db.String(50))
     tipo_pedido = db.Column(db.String(50))
     fecha = db.Column(db.Date, nullable=False)

@@ -21,43 +21,44 @@
             {% set total_pedido = total_pedido + pp.total_producto %}
           {% endfor %}
 
-        <div class="pedido-entrega">
-          🕒 Tu pedido llegará entre el <strong>{{ pedido.fecha_entrega_min.strftime("%d/%m/%Y") }}</strong> y el <strong>{{ pedido.fecha_entrega_max.strftime("%d/%m/%Y") }}</strong>.
-          {% if pedido.dias_restantes > 0 %}
-            <br>Faltan <strong>{{ pedido.dias_restantes }}</strong> día{{ 's' if pedido.dias_restantes > 1 }} para recibirlo.
-          {% else %}
-            <br><strong>¡Tu pedido debería estar llegando!</strong>
-          {% endif %}
-        </div>
+          <div class="pedido-entrega">
+            🕒 Tu pedido llegará entre el <strong>{{ pedido.fecha_entrega_min.strftime("%d/%m/%Y") }}</strong> y el <strong>{{ pedido.fecha_entrega_max.strftime("%d/%m/%Y") }}</strong>.
+            {% if pedido.dias_restantes > 0 %}
+              <br>Faltan <strong>{{ pedido.dias_restantes }}</strong> día{{ 's' if pedido.dias_restantes > 1 }} para recibirlo.
+            {% else %}
+              <br><strong>¡Tu pedido debería estar llegando!</strong>
+            {% endif %}
+          </div>
 
-        <ul class="productos-lista">
-          {% for pp in pedido.pedido_productos %}
-            <li class="acordeon-item">
-              <input type="checkbox" id="producto-{{ loop.index }}" class="acordeon-toggle">
-              <label for="producto-{{ loop.index }}" class="acordeon-label">
-                {{ pp.producto_variante.producto.nombre }}
-                <span class="flecha">⌄</span>
-              </label>
+          <ul class="productos-lista">
+            {% for pp in pedido.pedido_productos %}
+              <li class="acordeon-item">
+                <input type="checkbox" id="producto-{{ loop.index }}" class="acordeon-toggle">
+                <label for="producto-{{ loop.index }}" class="acordeon-label">
+                  {{ pp.producto_variante.producto.nombre }}
+                  <span class="flecha">⌄</span>
+                </label>
 
-              <div class="acordeon-contenido flex column align-center justify-center">
-                {% with color_imagen = pp.producto_variante.color.color_images|first %}
-                  {% if color_imagen %}
-                    <img style="width: 200px; height: 300px;" src="{{ color_imagen.img_producto }}" alt="Imagen del color">
+                <div class="acordeon-contenido flex column align-center justify-center">
+                  {% set imagenes = pp.producto_variante.producto.imagenes %}
+                  {% if imagenes and imagenes|length > 0 %}
+                    <img src="{{ imagenes[0].imagen_url }}" alt="Imagen del producto" style="max-width: 80px; height: auto; border: 1px solid #ccc; border-radius: 4px;" />
                   {% else %}
-                    <p><strong>No hay imagen disponible para este color.</strong></p>
-                    <p><strong>ID del producto:</strong> {{ pp.producto_variante.producto.id_producto }}</p>
+                    <p><em>Sin imagen disponible</em></p>
                   {% endif %}
-                {% endwith %}
-                <p><strong>Talla:</strong> {{ pp.producto_variante.talla }}</p>
-                <p><strong>Color:</strong> {{ pp.producto_variante.color.color_nombre }}</p>
-                <p><strong>Cantidad:</strong> {{ pp.cantidad }}</p>
-                <p><strong>Total:</strong> {{ pp.total_producto }}</p>
-              </div>
-            </li>
-          {% endfor %}
-        </ul>
 
-        <div class="total">Precio: {{ total_pedido }}</div>
+                  <p><strong>Talla:</strong> {{ pp.producto_variante.talla.talla }}</p>
+                  <p><strong>Color:</strong> {{ pp.producto_variante.color.color }}</p>
+                  <p><strong>Precio unitario:</strong> €{{ pp.producto_variante.producto.precio }}</p>
+                  <p><strong>Cantidad:</strong> {{ pp.cantidad }}</p>
+                  <p><strong>Total:</strong> €{{ pp.total_producto }}</p>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+
+          <div class="total">Precio total del pedido: €{{ total_pedido }}</div>
+        </div>
       </div>
     {% endfor %}
   {% else %}

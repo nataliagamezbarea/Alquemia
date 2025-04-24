@@ -1,16 +1,16 @@
 from backend.Modelos.database import db
 from backend.Modelos.Color import Color
-from backend.Modelos.Producto import Producto
+from backend.Modelos.Talla import Talla
 
 class ProductoVariante(db.Model):
     __tablename__ = 'producto_variantes'
 
     id_variantes = db.Column(db.Integer, primary_key=True, autoincrement=True)
     id_producto = db.Column(db.Integer, db.ForeignKey('productos.id_producto'), nullable=False)
-    color_id = db.Column(db.Integer, db.ForeignKey('colores.id_color'), nullable=False)
-    talla = db.Column(db.String(10))
-    stock = db.Column(db.Integer, nullable=False, default=0)
+    id_color = db.Column(db.Integer, db.ForeignKey('colores.id_color'), nullable=False)
+    id_talla = db.Column(db.Integer, db.ForeignKey('tallas.id_talla'), nullable=False)
+    stock = db.Column(db.Integer, default=0, nullable=False)
 
     producto = db.relationship('Producto', back_populates='variantes')
-    # Este backref ya está correctamente configurado
-    color = db.relationship('Color', backref='producto_variantes_color')
+    color = db.relationship('Color', backref='variantes')
+    talla = db.relationship('Talla', backref='variantes')
